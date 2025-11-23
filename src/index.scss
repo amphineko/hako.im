@@ -5,6 +5,8 @@
 @import "~@fontsource/roboto/500.css";
 @import "~@fontsource/roboto-mono/index.css";
 
+$text-color: #222;
+
 body {
     margin: 0;
     padding: 0;
@@ -14,6 +16,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    color: $text-color;
 }
 
 #container {
@@ -21,80 +25,82 @@ body {
     flex-direction: column;
     gap: 2rem;
 
-    font-family: "Roboto Mono";
+    font-family: "Roboto Mono", sans-serif;
 }
 
-header {
+header,
+main,
+nav,
+footer {
     h1 {
         font-size: 1.2rem;
     }
+
+    h2 {
+        font-size: 1.2rem;
+        margin: 0;
+        padding: 1em 0;
+
+        &.error {
+            color: #ff0f0f;
+        }
+    }
 }
 
-nav {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-
-    @media (max-width: 96em) {
-        flex-direction: column;
-    }
-
-    section {
-        h2 {
-            font-size: 1.2rem;
-            margin: 0;
-            padding: 1em 0;
-
-            .domain {
-                background: rgba(0, 0, 0, 0.03);
-            }
+main {
+    p {
+        span.language-indicator {
+            color: #aaa;
+            font-weight: bold;
         }
+    }
+}
 
-        ul {
-            display: flex;
-            flex-direction: column;
+nav ul {
+    display: flex;
+    flex-direction: column;
 
-            margin: 0;
-            padding: 0;
+    margin: 0;
+    padding: 0;
 
-            li {
-                list-style: none;
-                margin: 0;
-                padding: 0;
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
-                a {
-                    display: block;
-                    margin: 0.25em -1em;
-                    padding: 0.75em 1em;
+        a {
+            display: block;
+            margin: 0.25em -1em;
+            padding: 0.75em 1em;
 
-                    color: #1b294b;
-                    text-decoration: none;
+            color: #0085ca;
+            text-decoration: none;
 
-                    transition-duration: 5s;
+            transition-duration: 5s;
 
-                    span {
-                        display: inline-block;
-                    }
+            &:hover {
+                box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+                transition-duration: 0.25s;
+            }
 
-                    span.title {
-                        font-size: 1.2rem;
-                        text-decoration: underline;
-                    }
+            span {
+                display: inline-block;
+            }
 
-                    span.separator {
-                        display: none;
-                    }
-                }
+            span.title {
+                color: unset;
+                font-size: 1.2rem;
+                text-decoration: underline;
+            }
 
-                a:hover {
-                    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
-                    transition-duration: 0.25s;
-                }
+            span.separator {
+                display: none;
+            }
 
-                .missing {
-                    color: #ff3500;
-                    font-variant: small-caps;
-                }
+            span.description {
+                margin-left: 0.5em;
+                color: $text-color;
+                font-size: 0.9rem;
             }
         }
     }
